@@ -14,7 +14,6 @@ app.use(cors());
 
 app.use(express.static("website"));
 
-app.post("/add", addInfo);
 
 const addInfo=(req, res)=> {
   projectData["temp"] = req.body.temp;
@@ -22,12 +21,13 @@ const addInfo=(req, res)=> {
   projectData["content"] = req.body.content;
   res.send(projectData);
 }
+app.post("/add", addInfo);
 
-app.get("/all", getInfo);
 
 const getInfo=(req, res)=> {
   res.send(projectData);
 }
+app.get("/all", getInfo);
 
 const port = 8000;
 app.listen(port, () => {
